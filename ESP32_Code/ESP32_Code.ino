@@ -83,8 +83,7 @@ void loop() {
   }
 
   // Check if servos have reached the target positions
-  if (targetPanAngle != -1 && targetTiltAngle != -1 /*&&
-      panServo.read() == targetPanAngle && tiltServo.read() == targetTiltAngle*/) {
+  if (targetPanAngle != -1 && targetTiltAngle != -1) {
       
     // Check for IR data for 1000 milliseconds
     unsigned long startTime = millis();

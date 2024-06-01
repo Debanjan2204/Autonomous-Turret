@@ -1,15 +1,9 @@
 import cv2
-# import pigpio  #sudo apt-get install pigpio python-pigpio  # sudo pigpiod
-
-# import RPi.GPIO as GPIO
 import time
 import serial #pip install pyserial
 
 
-# GPIO pin setup
 
-# LASER_PIN = 22
-# BUZZER_PIN = 23
 
 
 ser = serial.Serial('/dev/serial0', 115200, timeout=1)
@@ -53,17 +47,14 @@ def main():
                 center_x = x + w // 2
                 center_y = y + h // 2
                 
-                # GPIO.output(LASER_PIN, GPIO.HIGH)
-                # GPIO.output(BUZZER_PIN, GPIO.HIGH)
+
                 
                 for (x, y, w, h) in faces:
                     cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
                      # Send the firing point coordinates to ESP32
                     send_coordinates(center_x, center_y)
 
-            # else:
-                # GPIO.output(LASER_PIN, GPIO.LOW)
-                # GPIO.output(BUZZER_PIN, GPIO.LOW)
+
             read_from_esp32()
             cv2.imshow('Face Detection', frame)
             
@@ -76,8 +67,6 @@ def main():
     finally:
         cap.release()
         cv2.destroyAllWindows()
-        #pi.stop()
-        # GPIO.cleanup()
         ser.close()
 
 if __name__ == "__main__":
