@@ -4,8 +4,6 @@ import serial #pip install pyserial
 
 
 
-
-
 ser = serial.Serial('/dev/serial0', 115200, timeout=1)
 time.sleep(2)  # Wait for the serial connection to initialize
 
